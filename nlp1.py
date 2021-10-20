@@ -44,3 +44,60 @@ print(chinese)
 #translates foreign languages back to English
 
 print(chinese.translate())
+
+
+from textblob import Word
+
+index = Word('index')
+#making it plural
+print(index.pluralize())
+
+cacti = Word('cacti')
+print(cacti.singularize())
+
+#wordlist
+animals = TextBlob('dog cat fish bird').words
+
+print(animals.pluralize())
+
+#spellcheck and correction
+word = Word('theyr')
+
+print(word.spellcheck())
+print(word.correct())
+
+# Normalization (normalizing words)
+word1 = Word("studies")
+word2 = Word("varieties")
+
+
+#does not give proper singular form of word
+print(word1.stem())
+print(word2.stem())
+
+
+#gives proper singular form of word
+print(word1.lemmatize())
+print(word2.lemmatize())
+
+#Definitons, Synonyms, and Antonyms from WordNet
+happy = Word("happy")
+
+print(happy.definitions)
+
+#set of synonyms
+print(happy.synsets)
+
+
+#gives synonyms just as text
+for s in happy.synsets:
+    for l in s.lemmas():
+        print(l.name())
+
+synonym = happy.synsets[1].lemmas()[0].name()
+print(synonym)
+
+antonym = happy.synsets[0].lemmas()[0].antonyms()[0].name()
+print(antonym)
+
+
